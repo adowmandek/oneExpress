@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <div class="display_table">
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>COUNT</th>
+                    <th>CATEGORY</th>
+                    <th>ITEM NAME</th>
+                    <th>QUANTITY IN STORE</th>
+   
+                </tr>
+            </thead>
+           
+
+            {% for instance in queryset %}
+            <tr>
+
+                <td>{{forloop.counter}}</td>
+                <td>{{instance.category}}</td>
+                <td><a href="" >{{instance.item_name}}</a></td>
+               <td> <a href="" ></a>{{instance.quantity}} </td>
+
+
+
+               
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    
+<style>
+    .header{
+        text-align: center;
+        text-shadow: 6px 6px 6px #c9c6c6;
+
+        font-family: helvetica;
+        color: purple;
+        font-size: 50px;
+        text-align: center;
+        width: 100%;
+        text-shadow: 6px 6px 6px #c9c6c6;
+        display: block;
+        font-weight: bolder;
+        padding: 2%;
+    }
+    .stock{
+       margin-left: 190px;
+       background-color:rgb(244, 240, 245);
+  
+    }
+    .table {
+        font-size: 13px;
+        text-align: center;
+        width: 95%;
+        margin: auto;
+        text-align: center;
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+        
+    .display_table {
+
+        padding-left: 210px;
+        padding-right: 40px;
+        padding-bottom: 20px;
+        box-shadow: 12px 12px 20px 6px rgb(189, 163, 189);
+    }
+     table, td, th {
+       border: 1px solid #ddd;
+       text-align: left;
+       padding-right: 48px;
+       border: 1px solid black;
+      
+
+    
+     }
+     tr:hover {
+       background-color:rgb(244, 240, 245);
+       cursor: pointer;
+     }
+     th, td {
+       padding: 15px;
+     }
+     th{
+       background-color: rgb(221, 168, 226);
+  
+     
+       color: black;
+     }
+
+</style>
+
+</body>
+</html>

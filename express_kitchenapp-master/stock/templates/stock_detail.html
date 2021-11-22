@@ -1,0 +1,135 @@
+{% include 'navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class=" padd"> 
+<a href="{% url 'stock:issue_items' queryset.id %}"><div class='btn-issue'><button>REQUEST THIS ITEM</button> </div></a>
+
+<a href="{% url 'stock:receive_items' queryset.id %}"><div class='btn-receive'><button> RECEIVE THIS ITEM</button></div></a>
+
+
+        <div class="display_table">
+          <table class='table'>
+                  <tr>
+                    <th>ITEM NAME</th>
+                    <th>QUANTITY IN STORE</th>
+                    <th>REORDER LEVEL</th>
+                    
+                    
+                  </tr>
+                  <tr>
+                    <td>{{queryset.item_name}}</td>
+                    <td>{{queryset.quantity}}</a></td>
+                    <td>{{queryset.reorder_level}}</td>
+                   
+                    
+                  </tr>
+          </table>
+        </div>
+
+    </div> 
+        <style>
+            .header {
+                font-family: helvetica;
+                color: purple;
+                font-size: 50px;
+                text-align: center;
+                width: 100%;
+                text-shadow: 6px 6px 6px #c9c6c6;
+                display: block;
+                font-weight: bolder;
+                padding: 2%;
+            }
+    
+            /*Align the title to the center of the page*/
+            .table {
+                font-size: 13px;
+                text-align: center;
+                width: 95%;
+                margin: auto;
+                text-align: center;
+                border-collapse: collapse;
+                border: 1px solid black;
+            }
+    
+            table, th, td {
+                border: 1px solid black;
+              }
+            /*Make alternating colors for the table rows*/
+            .table tr:nth-child(odd) {
+                background: rgb(122, 14, 122);
+                color: white;
+    
+            }
+    
+            .table tr:nth-child(even) {
+                background: white;
+            }
+    
+            th {
+                background-color: rgb(122, 14, 122);
+                color: white;
+                padding: 2%;
+    
+            }
+    
+            td {
+                padding: 2%;
+            }
+    
+            .display_table {
+
+                padding-left:15%;
+                padding-right: 5px;
+                padding-bottom: 20px;
+                box-shadow: 12px 12px 20px 6px rgb(189, 163, 189);
+            }
+            .success{
+                list-style: none;
+                background-color: plum;
+                color: white;
+                box-shadow: 12px 12px 12px plum;
+                text-align: center;
+            }
+            button{
+                
+                height:50px;
+                width :20%;
+                border-radius: 6px;
+                align-items: center;
+                font-size: 1rem;
+                background-color: rgb(226, 191, 226);
+                
+            }
+           .btn-receive{
+               padding-left: 50%;
+               margin-top: -8%;
+               height: auto;
+               width: 100%;
+               padding-bottom: 80px;
+               
+
+           }
+           .btn-issue{
+            padding-left: 25%;
+            height: auto;
+            margin-top: 1px;
+            width: 100%;
+            padding-bottom: 40px;
+        
+           }
+           .padd{
+               margin-bottom: 80%;
+           }
+        </style>
+    
+</body>
+</html>

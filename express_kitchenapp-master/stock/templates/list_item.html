@@ -1,0 +1,152 @@
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List item</title>
+</head>
+
+<body>
+    
+    {% if messages %}
+    <ul class="messages">
+           {% for message in messages %}
+                 <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+           {% endfor %}
+   </ul>
+{% endif %}
+
+    <div class="header" {{header}}>stock</div>
+    
+<div class="search">
+
+    <form method='POST' action=''>{% csrf_token %}
+        {{form}}
+            <input type="submit" value='Search'/>
+    </form>
+    <br>
+</div>
+
+
+
+    <div class="display_table">
+        <table class='table'>
+           
+                <tr>
+                    <th>COUNT</th>
+                    <th>CATEGORY</th>
+                    <th>ITEM NAME</th>
+                    <th>QUANTITY IN STORE</th>
+                    <th>REORDER LEVEL</th>
+                    <th>TIMESTAMP</th>
+                    <th>LAST UPDATED</th>
+                  
+                   
+                </tr>
+        
+
+            {% for instance in queryset %}
+            <tr>
+
+                <td>{{forloop.counter}}</td>
+                <td>{{instance.category}}</td>
+                <td><a href="{% url 'stock:update_items' instance.id %}" >{{instance.item_name}}</a></td>
+                
+                    <!-- {% if instance.quantity <= instance.reorder_level %}
+                    <div style="background-color: red;">
+                     <a href="{% url 'stock:stock_detail' instance.id %}" >{{instance.quantity}}</a>
+                    <a href="{% url 'stock:stock_detail' instance.id %}" ></a>{{instance.quantity}}
+                    </div>
+                    {% else %}
+                    <a href="{% url 'stock:stock_detail' instance.id %}" ></a>{{instance.reorder_level}}
+                    {% endif %} -->
+                  
+                <td> <a href="{% url 'stock:stock_detail' instance.id %}" >{{instance.quantity}}</a></td> 
+                <td><a href="{% url 'stock:reorder_level' instance.id %}">{{instance.reorder_level}}</a></td>
+                <td>{{instance.timestamp}}</td>
+                <td>{{instance.last_updated}}</td>
+
+
+               
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    
+<style>
+    .header{
+        text-align: center;
+        text-shadow: 6px 6px 6px #c9c6c6;
+
+        font-family: helvetica;
+        color: purple;
+        font-size: 50px;
+        text-align: center;
+        width: 100%;
+        text-shadow: 6px 6px 6px #c9c6c6;
+        display: block;
+        font-weight: bolder;
+        padding: 2%;
+    }
+    .stock{
+       margin-left: 190px;
+       background-color:rgb(244, 240, 245);
+  
+    }
+    .table {
+        font-size: 13px;
+        text-align: center;
+        width: 95%;
+        margin: auto;
+        text-align: center;
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+        
+    .display_table {
+
+        padding-left: 210px;
+        padding-right: 40px;
+        padding-bottom: 20px;
+        box-shadow: 12px 12px 20px 6px rgb(189, 163, 189);
+    }
+     table, td, th {
+       border: 1px solid #ddd;
+       text-align: left;
+       border: 1px solid black;
+       margin-left: 20px;
+       font-size: 12px;
+      
+
+    
+     }
+     tr:hover {
+       background-color:rgb(244, 240, 245);
+       cursor: pointer;
+     }
+     th, td {
+       padding: 15px;
+     }
+     th{
+       background-color: rgb(221, 168, 226);
+       color: black;
+     }
+     .success{
+        list-style: none;
+        background-color: #2e6da4;
+        color: white;
+        box-shadow: 12px 12px 12px rgb(221, 168, 226);;
+        text-align: center;
+    }
+    .search{
+        padding-left: 30%;
+    }
+</style>
+    
+</body>
+
+</html>

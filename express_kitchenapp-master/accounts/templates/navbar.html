@@ -1,0 +1,68 @@
+{% load static %}
+
+
+<style>
+  .hello-msg{
+    font-size: 18px;
+    color:black;
+    margin-right: 20px;
+    
+}
+
+#navbarNav{
+  background-color: purple;
+}
+
+
+
+.nav-link{
+        letter-spacing: none;
+        margin: -8px;
+        padding-right: 20px;
+        width: 200px;
+        height: 100%;
+        background-color:rgb(80, 36, 80);
+        position: fixed;
+        list-style: none;
+        margin-top: -21px;
+        display: block;
+        width: 150px;
+        color: white;
+        text-decoration: none;
+        font-size: 30px;
+        padding-bottom: -20px;
+        margin-bottom: 20px;
+        margin-top: 40px;
+}
+
+
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-purple bg-purple">
+  <!--<img src="{% static 'images/logo.png' %}">  -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'products' %}">Menu</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'products' %}">Orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'products' %}">Stock</a>
+    </ul>Orders
+    
+  </div>
+</div>
+</div>
+
+  <span class="hello-msg">Hello, {{request.user}}</span>
+  <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+
+</nav>
